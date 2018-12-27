@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<package name="index" extends="struts-default,json-default" namespace="/index">
+		<!-- 前台人员检索蛋白质实体信息 -->
+		<action name="find" class="indexAction" method="Search">
+        	<result name="success">../index.jsp</result>
+        </action>
+        <!-- 管理人员创建索引 -->
+       <action name="createIndex" class="indexAction" method="createIndex">
+        	<result name="success">/page/index/modifiyIndex.jsp</result>
+        </action>
+        
+        <!-- 初始化索引查询页面 -->
+		<action name="initIndexSearch" class="indexAction" method="viewIndex">
+        	<result name="success">/page/index/index-list.jsp</result>
+        	<result name="error">/page/common/error.jsp</result>
+        </action>
+        
+		
+		<!--条件查询索引信息  -->
+		<action name="findIndex" class="indexAction" method="findIndex">
+			<result name="success">/page/index/index-list.jsp</result>
+			<result name="error">/page/common/error.jsp</result>
+		</action>
+		
+		<!-- 跳转到修改页面 -->
+		<action name="editToIndex" class="indexAction" method="initIndexEdit">
+			<result name="success">/page/index/index-edit.jsp</result>
+			<result name="error">/page/common/error.jsp</result>
+		</action>
+        
+       <!--保存修改信息  -->
+		<action name="editIndex" class="indexAction" method="modifiIndex">
+			<result name="success" type="redirectAction">initIndexSearch</result>
+			<result name="error">/page/common/error.jsp</result>
+		</action>
+		<!-- 删除记录 -->
+		<action name="deleteIndex" class="indexAction" method="deleteIndex">
+			<result name="success" type="redirectAction">initIndexSearch</result>
+			<result name="error">/page/common/error.jsp</result>
+		</action>
+		
+		  <!-- 初始化蛋白质查询页面 -->
+		<action name="initProteinSearch" class="indexAction" method="viewProtein">
+        	<result name="success">/page/protein/protein-list.jsp</result>
+        	<result name="error">/page/common/error.jsp</result>
+        </action>
+        
+		
+		<!--条件查询索引信息  -->
+		<action name="findProtein" class="indexAction" method="findProtein">
+			<result name="success">/page/protein/protein-list.jsp</result>
+			<result name="error">/page/common/error.jsp</result>
+		</action>
+        
+</package>
+</struts>

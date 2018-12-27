@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd  
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd  
+           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+           
+    <context:component-scan base-package="cn.edu"></context:component-scan>
+	<bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/lucene?characterEncoding=UTF-8"></property>
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
+		<!-- 数据库连接池保持的最小连接数 -->
+		<property name="minIdle" value="5" />
+		<!-- 数据库连接池保持的最大连接数 -->
+		<property name="maxIdle" value="30" />
+		<!--
+			当数据库连接因为某种原因断掉之后，再重新从连接池中拿另外一个连接时实际上这个连接可能
+			已经无效，所以为了确保所拿到的连接全都有效需要在获取连接，返回连接以及连接空闲时进行 有效性验证
+			下面3个设置为ture时进行验证，默认为false
+		-->
+		<property name="validationQuery" value="SELECT 1" />
+		<!-- 取得连接时是否进行有效性验证 -->
+		<property name="testOnBorrow" value="true" />
+		<!-- 返回连接时是否进行有效性验证 -->
+		<property name="testOnReturn" value="false" />
+		<!-- 连接空闲时是否进行有效性验证 -->
+		<property name="testWhileIdle" value="false" />
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml">
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLInnoDBDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- 格式化sql -->
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- 是否自动更新表 -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<!-- 最大抓取深度，如果为0，则关闭默认的外连接抓取。建议值为0-3 -->
+				<prop key="hibernate.max_fetch_depth">1</prop>
+				<!-- 用于生成有助于调试的注释信息，默认为关闭 -->
+				<prop key="hibernate.use_sql_comments">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />  
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean><!--
+
+	 AOP切面声明事务管理 
+	--><tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" /><!--  支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式
+			--><tx:method name="update*" propagation="REQUIRED" /><!--
+			
+				支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式
+			
+			--><tx:method name="add*" propagation="REQUIRED" /><!--
+			
+				支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式
+			
+			--><tx:method name="delete*" propagation="REQUIRED" />
+			
+			<tx:method name="edit*" propagation="REQUIRED" /><!--
+			
+				支持当前事务，如果执行到save开头的任何方法时没有事务则开启一个事务 这是最常见的方式
+			
+			--><tx:method name="find*" propagation="SUPPORTS" read-only="true" /><!--  支持当前事务，如果当前没有事务，就以非事务方式执行。只读 
+			--><tx:method name="get*" propagation="SUPPORTS" read-only="true" /><!--
+			
+				支持当前事务，如果当前没有事务，就以非事务方式执行。只读
+			
+			--><tx:method name="*" />
+		</tx:attributes>
+	</tx:advice><!--
+	
+	<aop:config>
+		<aop:pointcut id="txMethod" expression="execution(* cn.edu.mwsuaf.Service.Impl..*(..))" />
+		<aop:advisor  pointcut-ref="txMethod" advice-ref="txAdvice"/>
+	</aop:config>
+	--><!-- basedao 代理 -->
+	<bean name="BaseDao" class="cn.edu.nwsuaf.dao.Impl.BaseDaoImpl"></bean>
+
+
+
+	<!--
+		Service代理，由于其他的Service都是集成BaseService，因此Service代理只有一个baseDao,其他的Service不需要代理Dao
+	-->
+	<bean id="BaseService" class="cn.edu.nwsuaf.Service.Impl.BaseServiceImpl">
+		<property name="baseDao">
+			<ref bean="BaseDao"></ref>
+		</property>
+	</bean>
+	<bean id="ProteinindexService" class="cn.edu.nwsuaf.Service.Impl.ProteinindexService">
+		<property name="baseDao" ref="BaseDao"></property>
+	</bean>
+	<bean id="IndexService" class="cn.edu.nwsuaf.Service.Impl.IndexService">
+		<property name="baseDao" ref="BaseDao"></property>
+	</bean>
+	<bean id="RoleService" class="cn.edu.nwsuaf.Service.Impl.RoleService">
+		<property name="baseDao" ref="BaseDao"></property>
+	</bean>
+	<bean id="UserinfoService" class="cn.edu.nwsuaf.Service.Impl.UserinfoService">
+		<property name="baseDao" ref="BaseDao"></property>
+	</bean>
+	<bean id="ProteinService" class="cn.edu.nwsuaf.Service.Impl.ProteinService">
+		<property name="baseDao" ref="BaseDao"></property>
+	</bean>
+	
+	<!-- Action代理 -->
+	<bean id="searchAction" class="cn.edu.nwsuaf.Action.SearchAction" scope="prototype">
+		<property name="proteinindexService">
+			<ref bean="ProteinindexService"></ref>
+		</property>
+		<property name="indexService">
+			<ref bean="IndexService"></ref>
+		</property>
+		
+	</bean>
+	<!-- 用户登录校验码 -->
+	<bean id="randomCodeAction" class="cn.edu.nwsuaf.Action.RandomCodeAction">
+	</bean>
+	<!-- 用户登录Action -->
+	<bean id="loginAction" class="cn.edu.nwsuaf.Action.LoginAction">
+		<property name="userinfoService">
+			<ref bean="UserinfoService" />
+		</property>
+		<property name="roleService">
+			<ref bean="RoleService"></ref>
+		</property>
+	</bean>
+	<!-- 用户管理Action -->
+	<bean id="userinfoAction" class="cn.edu.nwsuaf.Action.UserinfoAction" scope="prototype">
+		<property name="userinfoService">
+			<ref bean="UserinfoService" />
+		</property>
+		<property name="roleService">
+			<ref bean="RoleService"></ref>
+		</property>
+	</bean>
+	<!-- 索引管理Action -->
+	<bean id="indexAction" class="cn.edu.nwsuaf.Action.IndexAction" scope="prototype">
+		<property name="indexService">
+			<ref bean="IndexService"></ref>
+		</property>
+		<property name="proteinService">
+			<ref bean="ProteinService"></ref>
+		</property>
+		
+	</bean>
+</beans>

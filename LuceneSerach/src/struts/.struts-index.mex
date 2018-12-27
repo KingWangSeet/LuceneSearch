@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="index" location="0,0" size="0,0">
+    <action name="find" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index.jsp" />
+      </result>
+    </action>
+    <action name="createIndex" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modifiyIndex.jsp" />
+      </result>
+    </action>
+    <action name="initIndexSearch" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index-list.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="findIndex" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index-list.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="editToIndex" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="index-edit.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="editIndex" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="deleteIndex" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="index.jsp" path="index.jsp" location="10,30" size="150,55" />
+  <webResource name="index.jsp" path="../index.jsp" location="500,135" size="150,55" />
+  <webResource name="modifiyIndex.jsp" path="/page/index/modifiyIndex.jsp" location="0,0" size="0,0" />
+  <webResource name="index-list.jsp" path="/page/index/index-list.jsp" location="0,0" size="0,0" />
+  <webResource name="error.jsp" path="/page/common/error.jsp" location="0,0" size="0,0" />
+  <webResource name="index-edit.jsp" path="/page/index/index-edit.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

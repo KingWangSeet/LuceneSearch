@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<package name="user" extends="struts-default" namespace="/user">
+	
+		<action name="initSearch" class="userinfoAction" method="initSearch">
+        	<result name="success">/page/user/user-list.jsp</result>
+        </action>
+        <!--查询信息  -->
+         <action name="find" class="userinfoAction" method="find">  
+            <result name="success">/page/user/user-list.jsp</result>
+        </action>
+        <!-- 修改密码 -->
+        <action name="modifyUserPassword" class="userinfoAction" method="modifyUserPassword">  
+            <result name="success">/page/user/modify_pwd.jsp</result>
+        </action>
+        <action name="updateUserPassword" class="userinfoAction" method="updateysuserinfo">  
+            <result name="success">/page/user/modifiy.jsp</result>
+            <result name="error">../error.jsp</result>
+        </action>
+        <!-- 跳转到修改or添加页面 -->
+        <action name="editToSysuserinfo" class="userinfoAction" method="initEdit">  
+            <result name="success">/page/user/user-edit.jsp</result>
+        </action>
+        <!-- 保存 -->
+        <action name="editSysuserinfo" class="userinfoAction" method="modifiSysuserinfo" >  
+           <result name="success" type="redirectAction">initSearch</result>
+           <result name="error">../error.jsp</result>
+        </action>
+        <!-- 删除 -->
+        <action name="deleteSysuserinfo" class="userinfoAction" method="deleteSysuserinfo" >  
+            <result name="success" type="redirectAction">initSearch</result>
+            <result name="error">../error.jsp</result>
+        </action>
+        <!-- 索引维护工作 -->
+        <action name="viewIndex" class="userinfoAction" method="viewIndex" >  
+            <result name="success" >../error.jsp</result>
+            <result name="error">../error.jsp</result>
+        </action>
+        <action name="createIndex" class="userinfoAction" method="createIndex" >  
+            <result name="success" >../error.jsp</result>
+            <result name="error">../error.jsp</result>
+        </action>
+	</package>
+</struts>    

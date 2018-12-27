@@ -1,0 +1,25 @@
+/** 通用样式 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td, img{border:medium none;margin: 0;padding: 0;}
+body,button, input, select, textarea{font: 12px/1.5 'Simsun',tahoma, Srial, helvetica, sans-serif;}
+h1, h2, h3, h4, h5, h6{font-size: 100%;}
+em{font-style:normal;}
+ul, ol{list-style: none;}
+a{text-decoration: none;color:#333;}
+a:hover{text-decoration: none;}
+fieldset, img { border: medium none; vertical-align: middle;}
+/*a:hover{ }*/
+li:not(.tab):hover{ -moz-transition: all 0.3s ease-in; -webkit-transition: all 0.3s ease-in; -o-transition: all 0.3s ease-in;transition: all 0.3s ease-in;}
+img:hover{ -moz-transition: all 0.3s ease-in; -webkit-transition: all 0.3s ease-in; -o-transition: all 0.3s ease-in; transition: all 0.3s ease-in;}
+.clearfix:after{clear:both;content:"\200B";display:block;height:0;}
+.clearfix{*zoom:1;}
+.fl{float:left;}
+.fr{float:right;}
+.w1200{width:1200px; height:auto; margin:0 auto;}
+.hide{display:none}
+.a3a3a2{color: #a3a3a2;}
+.spance{width: 100%;height: 30px;}
+body{
+    background: #fff;
+    font-family: "微软雅黑";
+}
+/*****************0000000000000000000*************************/

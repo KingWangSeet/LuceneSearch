@@ -1,0 +1,200 @@
+
+body{
+        background: #FAFAFA url(../img/bg1.jpg) no-repeat center top;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        overflow-x:hidden;
+    } 
+span{
+    font-family: "微软雅黑";
+}
+.clearfix{
+	height:50px;
+}
+.top a{
+    position: relative;
+    top: 5px;
+
+}
+.loginbody{
+    width: 1000px;
+    height: 370px;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 200px;
+    
+    
+}
+.code {
+    width: 65px;
+}
+.nameistrue{
+	position:absolute;
+	left:40%;
+	top:13%;
+	font-size:15px;
+	color:red;
+}
+.passistrue{
+	position:absolute;
+	left:40%;
+	top:33%;
+	font-size:15px;
+	color:red;
+}
+.loginimg{
+    position: relative;
+    width: 300px;
+    height: 370px;
+    border-radius: 10px;
+    background: #17ddd6;
+    border-color: rgba(0,0,0,0);
+}
+.form{
+    position: relative;
+    top:-350px;
+    left:500px;
+    
+}
+.form h1{
+    position: relative;
+    font-size: 25px;
+    font-family: "微软简中圆","微软雅黑";
+    font-weight: normal;
+    left: 130px;
+    top:-20px;
+}
+.form input{
+    width: 250px;
+    height: 35px;
+    font-size: 15px;
+    color: #BBBBBB;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    padding-left: 10px;
+    margin-bottom: 25px;
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { 
+    color:    #CCCCCC;
+}
+input:-moz-placeholder, textarea:-moz-placeholder { 
+    color:    #CCCCCC;
+}
+input::-moz-placeholder, textarea::-moz-placeholder { 
+    color:    #CCCCCC;
+}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder { 
+    color:    #CCCCCC;
+}
+
+
+.send {
+display: none;
+position:absolute;
+width:220px;
+height:30px;
+background:#F09CA0;
+border-radius:3px; /* 圆角 */
+margin:30px auto 0;
+}
+.send1,.send3{
+    top:15px;
+    left: 400px;
+}
+.send2,.send4{
+    top: 90px;
+    left: 400px;
+}
+.send span{
+    font-family: "微软雅黑";
+    position: relative;
+    top:3px;
+    left: 10px;
+    font-size: 14px;
+    color: #fff;
+}
+.send .arrow {
+position:absolute;
+top:7px;
+left:-16px; /* 圆角的位置需要细心调试哦 */
+width:0;
+height:0;
+font-size:0;
+border:solid 8px;
+border-color:rgba(0,0,0,0) #F09CA0 rgba(0,0,0,0) rgba(0,0,0,0) ;
+}
+
+#loginbutton,#registbutton{
+    cursor: pointer;
+    width: 190px;
+    text-align: center;
+    margin-right: 24px;
+    font-family: "微软雅黑";
+    font-size: 17px;
+}
+#loginbutton{
+    color: #fff;
+    background: #17ddd6;
+}
+#loginbutton:hover {
+    border-color:rgb(0,0,0,0);
+    background-color: #F09CA0;
+    background: -webkit-linear-gradient(top, #F09CA0, #F09CF0);
+    background: -moz-linear-gradient(top, #F09CA0, #F09CF0);
+    background: linear-gradient(top, #F09CA0, #F09CF0);
+}
+
+#registbutton{
+    background: #fff;
+}
+#registbutton:hover{
+    background-color: #fff;
+    background: -webkit-linear-gradient(top, #EFEFEF, #FFFFFF);
+    background: -moz-linear-gradient(top, #EFEFEF, #FFFFFF);
+    background: linear-gradient(top, #EFEFEF, #FFFFFF);
+}
+.f1{
+    position: relative;
+    width: 300px;
+    top:-10px;
+}
+.f1 span{
+    font-size: 15px;
+    font-family: "微软雅黑";
+    color: #666666;
+    margin-right: 10px;
+}
+.f1 img{
+    margin-right: 10px;
+}
+.forget{
+    position: relative;
+    left: 330px;
+}
+.forget span{
+    color: #17ddd6;
+    font-size: 15px;
+    font-family: "黑体";
+    font-weight: bold;
+}
+
+#rem{
+    position: relative;
+    top:-10px;
+    width: 20px;
+    height: 20px;
+}
+#rem1{
+    position: relative;
+    color: #555555;
+    font-size: 14px;
+    top:-15px;
+}
+#rem2{
+    position: relative;
+    color: #BBBBBB;
+    font-size: 14px;
+    top:-15px;
+    margin-left: 15px;
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="user" location="0,0" size="0,0">
+    <action name="initSearch" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="user-list.jsp" />
+      </result>
+    </action>
+    <action name="find" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="user-list.jsp" />
+      </result>
+    </action>
+    <action name="modifyUserPassword" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modify_pwd.jsp" />
+      </result>
+    </action>
+    <action name="updateUserPassword" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="modifiy.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="editToSysuserinfo" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="user-edit.jsp" />
+      </result>
+    </action>
+    <action name="editSysuserinfo" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="deleteSysuserinfo" location="0,0" size="0,0">
+      <result name="success" />
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="viewIndex" location="0,0" size="0,0">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="error.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="user-list.jsp" path="/page/user/user-list.jsp" location="0,0" size="0,0" />
+  <webResource name="modify_pwd.jsp" path="/page/user/modify_pwd.jsp" location="0,0" size="0,0" />
+  <webResource name="modifiy.jsp" path="/page/user/modifiy.jsp" location="0,0" size="0,0" />
+  <webResource name="error.jsp" path="../error.jsp" location="0,0" size="0,0" />
+  <webResource name="user-edit.jsp" path="/page/user/user-edit.jsp" location="0,0" size="0,0" />
+</Struts2Diagram>
+

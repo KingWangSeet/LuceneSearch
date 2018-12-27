@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<package name="calculate" extends="commons" namespace="/cal">
+		<!-- 初始化查询页面 -->
+		<action name="calculateAllTarget" class="calculateAction" method="calculateAllTarget">
+			<result name="success">/page/mas/mas-list.jsp</result>
+		</action>
+		<action name="outPrint" class="calculateAction" method="initSearch">
+			<result name="success">/page/mas/masScore-list.jsp</result>
+		</action>
+		<action name="findScore" class="calculateAction" method="findScore">
+			<result name="success">/page/mas/masScore-list.jsp</result>
+		</action>
+	</package>
+</struts>

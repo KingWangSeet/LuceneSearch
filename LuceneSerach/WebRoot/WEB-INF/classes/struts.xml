@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- Struts2标签外观设置 -->
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.ui.templateDir" value="template" />
+	<constant name="struts.ui.templateSuffix" value="ftl" />
+
+	<!-- struts2委托spring管理 -->
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<!-- 通用 -->
+	<include file="struts/struts-comments.xml" />
+	<!--登录 -->
+	<include file="struts/struts-login.xml" />
+	<!-- 检索 -->
+	<include file="struts/struts-search.xml" />
+	<!-- 用户管理 -->
+	<include file="struts/struts-user.xml" />
+	<!-- 索引管理 -->
+	<include file="struts/struts-index.xml" />
+</struts>    

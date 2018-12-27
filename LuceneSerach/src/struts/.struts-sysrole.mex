@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Struts2Diagram version="2.0">
+  <package name="Sysrole" location="258,10" size="525,700">
+    <action name="initSearch" location="65,337" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="role-list.jsp" />
+      </result>
+    </action>
+    <action name="editToSysrole" location="65,512" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="role-edit.jsp" />
+      </result>
+    </action>
+    <action name="editSysrole" location="65,617" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="deleteSysrole" location="310,617" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="addFun" location="310,162" size="150,41">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="role-addFun.jsp" />
+      </result>
+    </action>
+    <action name="editSysrolejuri" location="310,57" size="150,41">
+      <result name="success" />
+    </action>
+    <action name="deleteSysrolejuri" location="65,57" size="150,41">
+      <result name="success" />
+    </action>
+  </package>
+  <webResource name="role-list.jsp" path="/page/sys/role/role-list.jsp" location="28,310" size="150,55" />
+  <webResource name="role-edit.jsp" path="/page/sys/role/role-edit.jsp" location="25,485" size="150,55" />
+  <webResource name="role-addFun.jsp" path="/page/sys/role/role-addFun.jsp" location="15,135" size="150,55" />
+  <include file="struts.xml" location="10,800" size="150,30" />
+  <include file="struts-default.xml" location="255,800" size="150,30" />
+</Struts2Diagram>
+
