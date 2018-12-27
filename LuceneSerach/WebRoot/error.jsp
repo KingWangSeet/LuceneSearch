@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 
-		<title>错误页面</title>
+		<title>错误页面error</title>
 
 		<link rel="stylesheet" type="text/css"
 			href="${pageContext.request.contextPath}/Styles/bootstrap.min.css" />
